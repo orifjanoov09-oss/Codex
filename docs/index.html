@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#070812">
+  <meta name="description" content="Google, Bing va Yandex qidiruv tizimlari bo‘yicha interaktiv test">
+  <title>Qidiruv Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"><span></span><span></span></div>
+  <header class="topbar">
+    <a class="wordmark" href="./" aria-label="Qidiruv Test bosh sahifasi">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M13.5 5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Z"/><path d="m20 20 7 7"/><path d="M10 13.5h7M13.5 10v7"/></svg>
+      <span>Qidiruv<span>Test</span></span>
+    </a>
+    <div class="topbar-status"><i></i> 20 savol · 4 variant</div>
+  </header>
+
+  <main class="student-shell">
+    <section id="welcome" class="view welcome-view">
+      <div class="welcome-copy">
+        <h1>Qidiruvni<br>tushuning.<br><span>Natijani isbotlang.</span></h1>
+        <p>Google, Bing va Yandex tizimlari bo‘yicha bilimlaringizni tekshiring. Har bir urinishda savollar va javoblar yangi tartibda keladi.</p>
+        <div class="facts" aria-label="Test haqida">
+          <div><strong>20</strong><span>savol</span></div>
+          <div><strong>4</strong><span>variant</span></div>
+          <div><strong>1</strong><span>urinish</span></div>
+        </div>
+      </div>
+
+      <div class="entry-stage">
+        <div class="signal-field" aria-hidden="true">
+          <div class="signal-copy">SEARCH / INDEX / VERIFY</div>
+          <div class="signal-track"><span></span></div>
+          <div class="signal-points"><i>G</i><i>B</i><i>Y</i></div>
+        </div>
+        <form id="start-form" class="entry-form">
+          <h2>Testni boshlash</h2>
+          <p>Natijangizni saqlash uchun ma’lumotlarni kiriting.</p>
+          <label>F.I.O.
+            <input id="full-name" name="full_name" autocomplete="name" maxlength="100" placeholder="Ism va familiya" required>
+          </label>
+          <label>Guruh
+            <input id="group-name" name="group_name" maxlength="50" placeholder="Masalan: AT-21" required>
+          </label>
+          <p id="start-error" class="form-error" role="alert"></p>
+          <button class="primary-button" type="submit"><span>Testni boshlash</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
+          <button id="resume-button" class="text-button hidden" type="button">Oldingi urinishni davom ettirish</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="quiz" class="view quiz-view hidden" aria-live="polite">
+      <div class="quiz-header">
+        <div>
+          <p id="participant-line" class="participant-line"></p>
+          <p id="section-name" class="section-name"></p>
+        </div>
+        <div id="question-position" class="question-position">1 / 20</div>
+      </div>
+      <div class="progress-rail" aria-label="Test jarayoni"><span id="progress-fill"></span><i id="progress-node"></i></div>
+      <article id="question-card" class="question-card">
+        <h2 id="question-text"></h2>
+        <div id="options" class="option-list" role="radiogroup" aria-label="Javob variantlari"></div>
+        <div class="quiz-actions">
+          <p id="answer-hint">Bitta javobni tanlang</p>
+          <button id="next-button" class="primary-button" type="button" disabled><span>Keyingi savol</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
+        </div>
+      </article>
+    </section>
+
+    <section id="result" class="view result-view hidden">
+      <div class="result-panel">
+        <div class="result-copy">
+          <p id="result-person"></p>
+          <h1 id="result-title">Natija tayyor</h1>
+          <p id="result-message"></p>
+          <button id="new-attempt" class="primary-button" type="button"><span>Yangi urinish</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 7a7 7 0 1 0 1 5M16 3v4h-4"/></svg></button>
+        </div>
+        <div class="result-score">
+          <span id="result-percent">0%</span>
+          <strong id="result-fraction">0 / 20</strong>
+          <div class="score-bar"><i id="score-fill"></i></div>
+        </div>
+      </div>
+      <div class="result-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 7.5 12 12l9-4.5L12 3Z"/><path d="M6 10v6c3 2.7 9 2.7 12 0v-6"/></svg><p>Natija administrator jadvaliga saqlandi. Javoblar tahlilini o‘qituvchidan olishingiz mumkin.</p></div>
+    </section>
+  </main>
+
+  <footer class="footer"><span>Web qidiruv tizimlari</span><a href="admin.html">Administrator</a></footer>
+  <div id="toast" class="toast" role="status"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
