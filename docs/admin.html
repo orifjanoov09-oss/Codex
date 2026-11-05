@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#070812">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Панель результатов — Qidiruv Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-body">
+  <div class="ambient" aria-hidden="true"><span></span><span></span></div>
+  <section id="admin-login" class="admin-login">
+    <a class="wordmark" href="./"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M13.5 5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Z"/><path d="m20 20 7 7"/><path d="M10 13.5h7M13.5 10v7"/></svg><span>Qidiruv<span>Test</span></span></a>
+    <form id="login-form" class="login-card">
+      <div class="lock-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg></div>
+      <h1>Панель результатов</h1>
+      <p>Введите пароль администратора, чтобы открыть статистику участников.</p>
+      <label>Пароль
+        <div class="password-field"><input id="admin-password" type="password" autocomplete="current-password" required><button id="toggle-password" type="button" aria-label="Показать пароль"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></svg></button></div>
+      </label>
+      <p id="login-error" class="form-error" role="alert"></p>
+      <button class="primary-button" type="submit"><span>Войти</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
+      <a class="back-link" href="./">Вернуться к тесту</a>
+    </form>
+  </section>
+
+  <div id="admin-app" class="admin-app hidden">
+    <aside class="admin-sidebar">
+      <a class="wordmark" href="./"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M13.5 5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Z"/><path d="m20 20 7 7"/><path d="M10 13.5h7M13.5 10v7"/></svg><span>Qidiruv<span>Test</span></span></a>
+      <nav><a class="active" href="#results"><svg viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19V3"/></svg>Результаты</a><a href="#questions"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"/></svg>Сложные вопросы</a></nav>
+      <button id="logout-button" class="sidebar-action" type="button"><svg viewBox="0 0 24 24"><path d="M10 5H5v14h5M14 8l4 4-4 4M18 12H9"/></svg>Выйти</button>
+    </aside>
+
+    <main class="dashboard">
+      <header class="dashboard-header"><div><h1>Результаты тестирования</h1><p id="updated-time">Данные загружаются…</p></div><button id="refresh-button" class="icon-button" type="button" aria-label="Обновить"><svg viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M6.1 9a7 7 0 0 1 11.7-2.1L20 9M4 15l2.2 2.1A7 7 0 0 0 18 15"/></svg></button></header>
+
+      <section id="results">
+        <div id="metric-grid" class="metric-grid skeleton-grid"><div></div><div></div><div></div><div></div></div>
+        <div class="data-toolbar">
+          <div class="search-field"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><input id="search-input" type="search" placeholder="Имя или группа"></div>
+          <select id="group-filter" aria-label="Фильтр по группе"><option value="">Все группы</option></select>
+          <select id="status-filter" aria-label="Фильтр по статусу"><option value="">Все попытки</option><option value="submitted">Завершённые</option><option value="in_progress">Незавершённые</option></select>
+          <button id="export-button" class="secondary-button" type="button"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>Экспорт CSV</button>
+        </div>
+        <div class="table-shell">
+          <table><thead><tr><th>Участник</th><th>Группа</th><th>Дата</th><th>Время</th><th>Результат</th><th>Статус</th><th></th></tr></thead><tbody id="results-body"></tbody></table>
+          <div id="empty-results" class="empty-state hidden"><svg viewBox="0 0 32 32"><path d="M5 7h22v18H5zM10 12h12M10 17h8"/></svg><h3>Результатов пока нет</h3><p>После прохождения теста участники появятся в этой таблице.</p></div>
+        </div>
+      </section>
+
+      <section id="questions" class="question-analytics"><div class="section-heading"><h2>Самые сложные вопросы</h2><p>Сначала показаны вопросы с наименьшей долей правильных ответов.</p></div><div id="question-stats" class="question-stats"></div></section>
+    </main>
+  </div>
+
+  <dialog id="attempt-dialog" class="attempt-dialog"><button id="dialog-close" class="dialog-close" type="button" aria-label="Закрыть">×</button><div id="attempt-detail"></div></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
